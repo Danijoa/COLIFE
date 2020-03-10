@@ -1,9 +1,14 @@
 import React, { useState, Component } from 'react';
-import { StyleSheet, TextInput, View, Button, Dimensions } from 'react-native';
+import { StyleSheet, TextInput, View, Dimensions } from 'react-native';
 import Icon from 'react-native-ionicons'
 import ProgressBarAnimated from 'react-native-progress-bar-animated';
 
-const TodoInsert = ({ onAddTodo }) => {
+var s = {
+  sc: 0,
+}
+
+const TodoInsert = ({ onAddTodo, todos }) => {
+
   const [newTodoItem, setNewTodoItem] = useState('');
 
   const todoInputHandler = newTodo => {
@@ -14,9 +19,23 @@ const TodoInsert = ({ onAddTodo }) => {
     onAddTodo(newTodoItem);
     setNewTodoItem('');
   };
+
+  const c = {
+    count: 0,
+  }
+  const d = {
+    dc: 0,
+  }
+  todos.map(todo => c.count++);
+  todos.map(todo => todo.checked ? d.dc++ : d.dc+=0);
+  //console.log("total: "+c.count)
+  s.sc = ( d.dc * 100)/ c.count
+  //console.log("checked: " + d.dc)
+
+
   return (
     <View style={styles.container}>
-      <Guagebar></Guagebar>
+      <Guagebar> </Guagebar>
       <View style={styles.inputContainer}>
         <View style={styles.addButton}>
           <Icon name="add" size={30} color="#999" onPress={addTodoHandler} />
@@ -58,32 +77,17 @@ const styles = StyleSheet.create({
 });
 
 class Guagebar extends Component {
-  state = {
-    progress: 20,
-  }
 
-  increase = (key, value) => {
-    this.setState({
-      [key]: this.state[key] + value,
-    });
-  }
-
-  render() {
+  render() {   
     return (
       <View>
         <ProgressBarAnimated
           width={Dimensions.get("screen").width}
           height={50}
-          value={this.state.progress}
+          value={s.sc}
           backgroundColor="#ffe3ed"
           backgroundColorOnComplete="#8FE0DA"
         />
-        {/*<View style={styles.buttonContainer}>
-              <Button
-                title="Increase 20%"
-                onPress={this.increase.bind(this, 'progress', 20)}
-              />
-             </View>*/}
       </View>
     );
   }

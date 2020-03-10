@@ -32,7 +32,7 @@ const NewScreen = () => {
     <SafeAreaView style={styles.container}>
       <Image style={styles.image} source={require('./dani.png')} />
       <View style={styles.card}>
-        <TodoInsert onAddTodo={addTodo} />
+        <TodoInsert onAddTodo={addTodo} todos={todos}/>
         <TodoList todos={todos} onRemove={removeTodo} onToggle={toggleTodo} />
       </View>
     </SafeAreaView>
