@@ -1,9 +1,9 @@
 import React from 'react';
-import {StyleSheet, ScrollView, Text} from 'react-native';
+import { StyleSheet, ScrollView, Text } from 'react-native';
 import TodoListItem from './TodoListItem';
 import moment from "moment";
 
-const TodoList = ({todos, onRemove, onToggle}) => {
+const TodoList = ({ todos, onRemove, onToggle }) => {
   return (
     <ScrollView contentContainerStyle={styles.listContainer}>
       <Text style={styles.date}>{moment().format('L')}</Text>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     width: 340,
     borderBottomColor: '#bbb',
     borderBottomWidth: StyleSheet.hairlineWidth,
-},
+  },
 });
 
 export default TodoList;

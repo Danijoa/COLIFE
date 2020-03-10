@@ -29,30 +29,30 @@ function MyTabs() {
       inactiveColor="#999"
       barStyle={{ backgroundColor: '#fbfbfb' }}
     >
-      <Tab.Screen 
-        name="New" 
-        component={NewScreen} 
-        options = {{ 
+      <Tab.Screen
+        name="New"
+        component={NewScreen}
+        options={{
           tabBarLabel: "New",
           tabBarIcon: ({ color, size }) => (
             <Icon android="add" size={size} color={color} />
           )
         }}
       />
-      <Tab.Screen 
-        name="Recent" 
+      <Tab.Screen
+        name="Recent"
         component={RecentScreen}
-        options = {{ 
+        options={{
           tabBarLabel: "Recent",
           tabBarIcon: ({ color, size }) => (
             <Icon name="calendar" size={size} color={color} />
           )
-        }} 
+        }}
       />
-      <Tab.Screen 
-        name="Cat" 
-        component={CatScreen} 
-        options = {{ 
+      <Tab.Screen
+        name="Cat"
+        component={CatScreen}
+        options={{
           tabBarLabel: "Cat",
           tabBarIcon: ({ color, size }) => (
             <Icon name="logo-octocat" size={size} color={color} />
@@ -63,9 +63,9 @@ function MyTabs() {
   );
 }
 
-export default function App(){
-  SplashScreen.hide(); 
-  return(
+export default function App() {
+  SplashScreen.hide();
+  return (
     <NavigationContainer>
       <MyTabs />
     </NavigationContainer>
